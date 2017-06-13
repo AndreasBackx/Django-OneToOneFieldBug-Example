@@ -1,0 +1,36 @@
+BEGIN;
+--
+-- Create model Group
+--
+CREATE TABLE `myapp_group` (`id` varchar(255) NOT NULL PRIMARY KEY);
+--
+-- Create model Member
+--
+CREATE TABLE `myapp_member` (`id` varchar(255) NOT NULL PRIMARY KEY, `group_id` varchar(255) NULL);
+--
+-- Create model Agreement
+--
+CREATE TABLE `myapp_agreement` (`id` varchar(255) NOT NULL PRIMARY KEY, `member_id` varchar(255) NULL UNIQUE);
+ALTER TABLE `myapp_member` ADD CONSTRAINT `myapp_member_group_id_31ff18be_fk_myapp_group_id` FOREIGN KEY (`group_id`) REFERENCES `myapp_group` (`id`);
+ALTER TABLE `myapp_agreement` ADD CONSTRAINT `myapp_agreement_member_id_0dc75c75_fk_myapp_member_id` FOREIGN KEY (`member_id`) REFERENCES `myapp_member` (`id`);
+COMMIT;
+BEGIN;
+--
+-- Alter field id on group
+--
+ALTER TABLE `myapp_member` DROP FOREIGN KEY `myapp_member_group_id_31ff18be_fk`;
+ALTER TABLE `myapp_group` MODIFY `id` varchar(191) NOT NULL;
+ALTER TABLE `myapp_member` MODIFY `group_id` varchar(191) NULL;
+ALTER TABLE `myapp_member` ADD CONSTRAINT `myapp_member_group_id_31ff18be_fk` FOREIGN KEY (`group_id`) REFERENCES `myapp_group` (`id`);
+--
+-- Alter field id on member
+--
+ALTER TABLE `myapp_agreement` DROP FOREIGN KEY `myapp_agreement_member_id_0dc75c75_fk`;
+ALTER TABLE `myapp_member` MODIFY `id` varchar(191) NOT NULL;
+ALTER TABLE `myapp_agreement` MODIFY `member_id` varchar(191) NULL;
+ALTER TABLE `myapp_agreement` ADD CONSTRAINT `myapp_agreement_member_id_0dc75c75_fk` FOREIGN KEY (`member_id`) REFERENCES `myapp_member` (`id`);
+--
+-- Alter field id on agreement
+--
+ALTER TABLE `myapp_agreement` MODIFY `id` varchar(191) NOT NULL;
+COMMIT;

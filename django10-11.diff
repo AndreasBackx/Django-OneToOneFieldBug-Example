@@ -1,0 +1,11 @@
+--- django10	2017-06-13 22:18:21.099594038 +0200
++++ django11	2017-06-13 22:17:38.821556738 +0200
+@@ -25,7 +25,7 @@
+ --
+ -- Alter field id on member
+ --
+-ALTER TABLE `myapp_agreement` DROP FOREIGN KEY `myapp_agreement_member_id_0dc75c75_fk`;
++ALTER TABLE `myapp_agreement` DROP FOREIGN KEY `myapp_agreement_member_id_0dc75c75_fk_myapp_member_id`;
+ ALTER TABLE `myapp_member` MODIFY `id` varchar(191) NOT NULL;
+ ALTER TABLE `myapp_agreement` MODIFY `member_id` varchar(191) NULL;
+ ALTER TABLE `myapp_agreement` ADD CONSTRAINT `myapp_agreement_member_id_0dc75c75_fk` FOREIGN KEY (`member_id`) REFERENCES `myapp_member` (`id`);
