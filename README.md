@@ -1,4 +1,4 @@
-This project shows a bug present in Django with migrating MySQL OneToOneFields in Django 1.11.2 and the master branch for commit [7c4f05fae2ae12d698dc28421f5d4659162f928a](https://github.com/django/django/commit/7c4f05fae2ae12d698dc28421f5d4659162f928a) that is not present in 1.10.7. This was tested on MySQL 5.7.18.
+This project is a test case for ticket [28305](https://code.djangoproject.com/ticket/28305) on the Django issue tracker. The bug is present in Django 1.11.2 and the master branch for commit [7c4f05fae2ae12d698dc28421f5d4659162f928a](https://github.com/django/django/commit/7c4f05fae2ae12d698dc28421f5d4659162f928a) that is not present in 1.10.7. This was tested on MySQL 5.7.18.
 
 ## How to test the bug
 
